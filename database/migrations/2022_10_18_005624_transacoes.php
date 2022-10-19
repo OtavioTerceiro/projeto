@@ -17,13 +17,13 @@ class Transacoes extends Migration
             $table->id();
             $table->date('data_trans');
             $table->boolean('operacao');
-            $table->string('fornecedor_cliente')->max(150);
-            $table->string('cnpj_fornecedor')->max(150);
+            $table->foreignId('id_fornecedor')->constrained('fornecedores')->onDelete('cascade')->onUpdate('cascade');
+
             $table->string('nNF')->max(200);
-            $table->string('cod_prod');
-            $table->decimal('preco',2);
-            $table->decimal('qtd_entrada',2);
-            $table->decimal('qtd_saida',2);
+            $table->foreignId('id_produto')->constrained('produtos')->onDelete('cascade')->onUpdate('cascade');
+            $table->decimal('preco',2); 
+            $table->decimal('qtd_entrada',2); 
+            $table->decimal('qtd_saida',2); 
             $table->integer('entrada_saida');
         });
     }

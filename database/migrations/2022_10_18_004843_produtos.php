@@ -17,7 +17,7 @@ class Produtos extends Migration
             $table->id();
             $table->string('nome_produto')->max(150);
             $table->string('unidade_medida')->max(50);
-            $table->string("fornecedor")->max(150);
+            $table->foreignId("fornecedor")->constrained('fornecedores')->onDelete('cascade')->onUpdate('cascade'); 
             $table->decimal("preco",2);//double
             $table->string("departamento_produto")->max(150);
             $table->integer("quantidade_embalagem"); //int
@@ -25,6 +25,8 @@ class Produtos extends Migration
             $table->integer("id_link"); //int
         });
     }
+
+
 
     /**
      * Reverse the migrations.
