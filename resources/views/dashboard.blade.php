@@ -1,13 +1,7 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="h4 font-weight-bold">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="card my-4">
-        <div class="card-body">
-            You're logged in!
-        </div>
-    </div>
-</x-app-layout>
+@section('conteudo')
+<form action="" method="POST" enctype="multipart/form-data">
+    Adicione um arquivo<input type="file" name="xml" id="xml" class="form-control">
+</form>
+@endsection

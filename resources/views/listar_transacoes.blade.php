@@ -2,7 +2,7 @@
 
 @section('conteudo')
 
-<h2>LISTAR PRODUTO</h2>
+<h2>LISTAR TRANSAÇÕES</h2>
 
 <table class="table table-light">
 
@@ -15,8 +15,8 @@
 
     <tbody>
         <tr>
-            <td>SE LEU MAMOU</td>
-            <td>SE LEU MAMOU</td>
+            <td>E PRA QUEM FICA</td>
+            <td>MINHA PICA</td>
         </tr>
     </tbody>
 </table>

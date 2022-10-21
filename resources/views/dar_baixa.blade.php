@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('conteudo')
-    <form class="form-control" action="" method="get">
-        <label for="cod_prod" class="form-label">
-            Código do produto<input class="form-control" type="text" name="cod_prod" id="cod_prod">
-        </label>
+    <form action="" method="post">
+        Quantidade de Saída<input class="form-control" type="number" name="" id="" placeholder="Digite uma quantidade para saida">
 
         <button class="btn btn-success my-3 text-white fw-bold mx-4" type="submit">Verificar</button>
     </form>
 @endsection
+
+@section('conteudo')

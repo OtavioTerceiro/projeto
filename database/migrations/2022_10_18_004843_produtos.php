@@ -18,11 +18,11 @@ class Produtos extends Migration
             $table->string('nome_produto')->max(150);
             $table->string('unidade_medida')->max(50);
             $table->foreignId("fornecedor")->constrained('fornecedores')->onDelete('cascade')->onUpdate('cascade'); 
-            $table->decimal("preco",2);//double
+            $table->decimal("preco",8);//double
             $table->string("departamento_produto")->max(150);
             $table->integer("quantidade_embalagem"); //int
-            $table->integer("quantidade");
-            $table->integer("id_link"); //int
+            $table->integer("quantidade")->nullable();
+            $table->integer("id_link")->nullable(); //int
         });
     }
 

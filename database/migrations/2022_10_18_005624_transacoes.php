@@ -18,7 +18,6 @@ class Transacoes extends Migration
             $table->date('data_trans');
             $table->boolean('operacao');
             $table->foreignId('id_fornecedor')->constrained('fornecedores')->onDelete('cascade')->onUpdate('cascade');
-
             $table->string('nNF')->max(200);
             $table->foreignId('id_produto')->constrained('produtos')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('preco',2); 
