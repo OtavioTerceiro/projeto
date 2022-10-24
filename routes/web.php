@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\XmlController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
+Route::post('enviar/xml', [XmlController::class,'enviar'])->middleware(['auth'])->name('enviar.xml'); //agora vai no form e coloca
+
 
 Route::get('/produtos', [ProdutosController::class,'index'])->middleware(['auth'])->name('produtos');
 

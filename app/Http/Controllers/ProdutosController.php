@@ -16,6 +16,6 @@ class ProdutosController extends Controller
     public function salvar(Request $request){
         //dd($request->all());
         Produto::create($request->all());
-        return back();
+        return back()->with('status','Dados salvos com sucesso!');
     }
 }

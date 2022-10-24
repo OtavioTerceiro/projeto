@@ -6,6 +6,13 @@
     @csrf <!-- Token de segurança ñ funciona sem ele     -->
     <h2>Cadastrar</h2>
 
+    @if (session('status'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('status')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+{{-- o backend no controller pra retornar o status --}}
+    @endif
     <label for="produto">Nome do Produto</label>
         <input class="form-control" type="text" name="nome_produto" placeholder="Digite o nome do produto"> 
 

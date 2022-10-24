@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Xml extends Model
 {
     use HasFactory;
-
+    
+    protected $table = 'xml';
+    public $timestamps = false;
     protected $fillable = [
-        'name',
         'chave',
     ];
 }
