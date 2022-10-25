@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Transacao extends Model
 {
     use HasFactory;
-    // protected $table = 'transacoes';
+    protected $table = 'transacoes';
+    public $timestamps = false;
+
     protected $fillable = [
        'data_trans',
        'operacao',
@@ -18,6 +20,6 @@ class Transacao extends Model
        'preco',
        'qtd_entrada',
        'qtd_saida',
-       'entrada_saida'
+       'id_xml'
     ];
 }

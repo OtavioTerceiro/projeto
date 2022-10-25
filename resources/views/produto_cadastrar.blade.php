@@ -23,14 +23,6 @@
     <label for="userName">Preço do Produto</label>
         <input class="form-control" type="double" name="preco" placeholder="Digite o preço do produto"> 
 
-    <label for="userName">Fornecedor</label>
-        <select class="form-select" name="fornecedor">
-            <Option>Selecione uma opção</Option>
-            @foreach ($fornecedores as $fornecedor)
-                <Option value="{{$fornecedor->id}}">{{$fornecedor->nome_fornecedor}}</Option>
-            @endforeach
-        </select>
-
     <label for="userName">Departamento do Produto</label>
         <input class="form-control" type="text" name="departamento_produto" 
         placeholder="Digite o departamento que o produto irá">
@@ -38,8 +30,9 @@
     <label for="userName">Quantidade da Embalagem</label>
         <input class="form-control" type="number" name="quantidade_embalagem" 
         placeholder="Digite a quantidade da sua embalagem">
-
-    
+        
+    <label for="userName">Código XML</label>
+        <input class="form-control" type="number" placeholder="Digite o codigo XML" name="id_link">
 
         <button class="btn btn-success my-3 text-white fw-bold" type="submit">Enviar</button>
     </form>
