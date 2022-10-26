@@ -27,7 +27,7 @@
 
         <div class="row m-4">
             <div class="d-flex flex-column gap-3 justify-content-center col-3">
-                <a class="btn btn-primary fs-3" href='#'>Ir para lista de arquivos.</a>
+                <a class="btn btn-primary fs-3" href='{{route('dashboard')}}'>Ir para XML.</a>
                 <a class="btn btn-primary fs-3" href='{{route('produtos')}}'>Ir para o cadastro manual de produtos.</a>
                 <a class="btn btn-primary fs-3" href="{{route('dar_baixa_busca')}}">Dar baixa de produtos</a>
                 <a class="btn btn-primary fs-3" href="{{route('cancelar_baixa')}}">Cancelar baixa em produto</a>

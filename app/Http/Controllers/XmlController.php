@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fornecedor;
+use App\Models\Produto;
 use App\Models\Transacao;
 use App\Models\Xml;
 use Illuminate\Http\Request;
@@ -30,6 +31,10 @@ class XmlController extends Controller
 		$xml->chave = $dados['id'];//roda
 		$xml->save();
 		
+		/*Salvar a quantidade do produto da XML na tabela produtos*/
+
+		//$conexao->query("UPDATE produto_cadastrar SET quantidade = quantidade + {$item->prod->qCom} WHERE id_link = {$item->prod->cProd}");
+
 		if(!Fornecedor::where('cnpj_fornecedor', $dados['emitentecnpj'])->exists()){
 			// verifica se o fornecedor já existe e se não existir ele cria um novo,
 			$fornecedor = new Fornecedor();
@@ -41,10 +46,20 @@ class XmlController extends Controller
 		}
 
 			foreach ($dados_xml->NFe->infNFe->det as $item) {
+
+				//$conexao->query("UPDATE produto_cadastrar SET quantidade = quantidade + {$item->prod->qCom} WHERE id_link = {$item->prod->cProd}");
+
+				//input: id_link
+				$produto = Produto::where('id_link', $item->prod->cProd)->first();
+				$produto->update([
+					'quantidade' => $produto->quantidade + (int) $item->prod->qCom
+				]);
+				
 				Transacao::create([
 					'data_trans' => now(),
 					'operacao' => 0,					// 0 = entrada, 1 = saida
 					'id_fornecedor' => $fornecedor->id,
+					'id_produto' => $produto->id,
 					'nNF' => $dados['numeronf'],
 					'preco' => $item->prod->vUnCom,
 					'qtd_entrada' => $item->prod->qCom,

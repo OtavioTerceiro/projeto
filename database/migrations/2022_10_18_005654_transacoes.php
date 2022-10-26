@@ -20,13 +20,12 @@ class Transacoes extends Migration
             $table->foreignId('id_fornecedor')->constrained('fornecedores')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nNF')->max(200);
             $table->foreignId('id_produto')->nullable()->constrained('produtos')->onDelete('cascade')->onUpdate('cascade');
-            $table->decimal('preco',2); 
-            $table->decimal('qtd_entrada',2); 
-            $table->decimal('qtd_saida',2); 
+            $table->decimal('preco'); //
+            $table->decimal('qtd_entrada'); 
+            $table->decimal('qtd_saida')->nullable();
             $table->foreignId('id_xml')->constrained('xml')->onDelete('cascade')->onUpdate('cascade');
         });
     }           
-
     /**
      * Reverse the migrations.
      *
