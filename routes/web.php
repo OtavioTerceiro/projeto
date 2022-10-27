@@ -35,14 +35,12 @@ Route::get('/produtos_listar', function(){
     return view('listar_produto');
 })->middleware(['auth'])->name('listar');
 
-Route::get('/dar_baixa_busca', function(){
-    return view('dar_baixa_busca');
-})->middleware(['auth'])->name('dar_baixa_busca');
+Route::get('/dar_baixa_busca',[ProdutosController::class,'buscarProduto'])
+->middleware(['auth'])->name('dar_baixa_busca');
 
-Route::get('/dar_baixa', function(){
-    return view('dar_baixa');
-})->middleware(['auth'])->name('dar_baixa');
+Route::get('/dar_baixa',[ProdutosController::class,'darBaixa'])->middleware(['auth'])->name('dar_baixa');
 
+Route::post('/dar_baixa/{cod_prod}',[ProdutosController::class,'baixaTransacao'])->middleware(['auth'])->name('baixa.transacao');
 Route::get('/cancelar_baixa', function(){
     return view('cancelar_baixa');
 })->middleware(['auth'])->name('cancelar_baixa');
