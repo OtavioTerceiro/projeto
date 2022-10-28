@@ -15,6 +15,7 @@ class Produtos extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_fornecedor')->nullable()->constrained('fornecedores')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nome_produto')->max(150);
             $table->string('unidade_medida')->max(50);
             $table->decimal("preco",8);//double

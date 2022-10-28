@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\TransacaoController;
 use App\Http\Controllers\XmlController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,9 +32,7 @@ Route::get('/produtos', [ProdutosController::class,'index'])->middleware(['auth'
 
 Route::post('/produtos/salvar', [ProdutosController::class,'salvar'])->middleware(['auth'])->name('produtos.salvar');
 
-Route::get('/produtos_listar', function(){
-    return view('listar_produto');
-})->middleware(['auth'])->name('listar');
+Route::get('/produtos_listar', [ProdutosController::class,'listarProdutos'])->middleware(['auth'])->name('listar');
 
 Route::get('/dar_baixa_busca',[ProdutosController::class,'buscarProduto'])
 ->middleware(['auth'])->name('dar_baixa_busca');
@@ -41,16 +40,18 @@ Route::get('/dar_baixa_busca',[ProdutosController::class,'buscarProduto'])
 Route::get('/dar_baixa',[ProdutosController::class,'darBaixa'])->middleware(['auth'])->name('dar_baixa');
 
 Route::post('/dar_baixa/{cod_prod}',[ProdutosController::class,'baixaTransacao'])->middleware(['auth'])->name('baixa.transacao');
+
 Route::get('/cancelar_baixa', function(){
     return view('cancelar_baixa');
 })->middleware(['auth'])->name('cancelar_baixa');
 
-Route::get('/lista_cancelar_baixa', function(){
-    return view('lista_cancelar_baixa'); //deve estar errado
-})->middleware(['auth'])->name('lista_cancelar_baixa');
+Route::get('/lista_cancelar_baixa',[TransacaoController::class,'index'])->middleware(['auth'])->name('transacao.index');
+// esse é para o form
+Route::get('/listar_transacoes', [TransacaoController::class,'mostrarTransacoes'])->middleware(['auth'])->name('listar_transacoes'); 
+// esse mostra a tabela
+Route::get('/cancelar_transacao/{id}', [TransacaoController::class,'cancelarBaixa'])->middleware(['auth'])->name('cancelar_transacao'); 
+//  esse cancela a baixa
 
-Route::get('/listar_transacoes', function(){
-    return view('listar_transacoes');
-})->middleware(['auth'])->name('listar_transacoes');
 
 require __DIR__.'/auth.php';
+

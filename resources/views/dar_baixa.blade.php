@@ -12,6 +12,17 @@
        <label>
         Quantidade de Saída<input class="form-control" type="number" name="quantidade" id="" placeholder="Digite uma quantidade"></label>
 
+
+        <div class="form-group col-md-2">
+            <label for="motivo_saida">Motivo de Saída</label>
+            <select name="motivo_saida" class="form-control">
+                <option selected value="Venda">Venda</option>
+                <option value="Devolucao">Devolução</option>
+                <option value="Avaria">Avaria</option>
+                <option value="Garantia">Garantia</option>
+            </select>
+        </div>
+
         <button class="btn btn-success my-3 text-white fw-bold mx-4" type="submit">Concluir</button>
     </form>
 @endsection

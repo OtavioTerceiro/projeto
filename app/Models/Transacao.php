@@ -12,14 +12,19 @@ class Transacao extends Model
     public $timestamps = false;
 
     protected $fillable = [
-       'data_trans',
-       'operacao',
-       'id_fornecedor',
-       'nNF',
-       'id_produto',
-       'preco',
-       'qtd_entrada',
-       'qtd_saida',
-       'id_xml'
+        'data_trans',
+        'operacao',
+        'motivo_saida',
+        'id_fornecedor',
+        'nNF',
+        'id_produto',
+        'preco',
+        'qtd_transacao',
+        //    'qtd_entrada',
+        //    'qtd_saida',
+        'id_xml',
+        'observacao'
     ];
+        
+    
 }

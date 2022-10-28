@@ -16,7 +16,7 @@ class XmlController extends Controller
         $arquivo_xml= $request->file('xml');
         // salva o arquivo xml na variavel xml
         $dados_xml = simplexml_load_file($arquivo_xml);
-        $dados['id'] = str_replace("NFe", "", $dados_xml->NFe->infNFe['Id']);
+        $dados['id'] = str_replace("NFe", "", $dados_xml->NFe->infNFe['Id']);// sim
         $dados['numeronf'] = $dados_xml->NFe->infNFe->ide->nNF;
         $dados['emitente']= $dados_xml->NFe->infNFe->emit->xNome;
         $dados['emitentecnpj'] = $dados_xml->NFe->infNFe->emit->CNPJ;
@@ -28,7 +28,7 @@ class XmlController extends Controller
 		$arquivo_xml->storeAs('xml', $arquivo_xml->getClientOriginalName());
         // salva o nome do arquivo no banco de dados
         $xml = new Xml();
-		$xml->chave = $dados['id'];//roda
+		$xml->chave = $dados['id'];
 		$xml->save();
 		
 		/*Salvar a quantidade do produto da XML na tabela produtos*/
@@ -45,28 +45,37 @@ class XmlController extends Controller
 			$fornecedor = Fornecedor::where('cnpj_fornecedor', $dados['emitentecnpj'])->first();
 		}
 
-			foreach ($dados_xml->NFe->infNFe->det as $item) {
+		foreach ($dados_xml->NFe->infNFe->det as $item) {
 
-				//$conexao->query("UPDATE produto_cadastrar SET quantidade = quantidade + {$item->prod->qCom} WHERE id_link = {$item->prod->cProd}");
+			//$conexao->query("UPDATE produto_cadastrar SET quantidade = quantidade + {$item->prod->qCom} WHERE id_link = {$item->prod->cProd}");
 
-				//input: id_link
-				$produto = Produto::where('id_link', $item->prod->cProd)->first();
-				$produto->update([
-					'quantidade' => $produto->quantidade + (int) $item->prod->qCom
-				]);
-				
-				Transacao::create([
-					'data_trans' => now(),
-					'operacao' => 0,					// 0 = entrada, 1 = saida
-					'id_fornecedor' => $fornecedor->id,
-					'id_produto' => $produto->id,
-					'nNF' => $dados['numeronf'],
-					'preco' => $item->prod->vUnCom,
-					'qtd_entrada' => $item->prod->qCom,
-					'qtd_saida' => null, //vai mudar?
-					'id_xml' => $xml->id, //se for mudar vai ter que alterar o model a migration e rodar
-				]);
-			}
+			//input: id_link
+			$produto = Produto::where('id_link', $item->prod->cProd)->first();
+			$produto->update([
+				'quantidade' => $produto->quantidade + (int) $item->prod->qCom,
+				'id_fornecedor' => $fornecedor->id
+			]);
+
+			/*$produto->update([
+				'id_fornecedor' => $fornecedor->id;
+			]);*/
+
+			Transacao::create([
+				'data_trans' => now(),
+				'operacao' => 0,					// 0 = entrada, 1 = saida
+				'id_fornecedor' => $fornecedor->id,
+				'id_produto' => $produto->id,
+				'nNF' => $dados['numeronf'],
+				'preco' => $item->prod->vUnCom,
+				'qtd_transacao' => $item->prod->qCom,
+				// 'qtd_entrada' => $item->prod->qCom,
+				// 'qtd_saida' => null, //vai mudar?
+				'id_xml' => $xml->id, //se for mudar vai ter que alterar o model a migration e rodar
+			]);
+		}
+
+
+
         return back()->with('status', 'Arquivo enviado com sucesso!');
     }
 }

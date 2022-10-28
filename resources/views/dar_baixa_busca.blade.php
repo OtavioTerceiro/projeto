@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('conteudo')
-{{-- formulário de busca --}}
+
     <form class="form-control" action="{{route('dar_baixa')}}" method="get">
         <label for="cod_prod" class="form-label">
             Código do produto<input class="form-control" type="text" name="cod_prod" id="cod_prod">

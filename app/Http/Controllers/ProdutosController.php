@@ -37,12 +37,22 @@ class ProdutosController extends Controller
         Transacao::create([
             'data_trans' => now(),
             'operacao' => 1,
-            'id_fornecedor' => 1, // não tem fornecedor ou é consusmidor final eu estou dizendo que 0 vai representar o consumidor final
+            'motivo_saida' => $request->motivo_saida,
+            //'id_fornecedor' => 1, // não tem fornecedor ou é consusmidor final eu estou dizendo que 0 vai representar o consumidor final
             'preco' => $produto->preco, 
-            'qtd_saida' => $request->quantidade,
+            'qtd_transacao' => $request->quantidade,
             'id_produto' => $produto->id,
         ]);
         return back()->with('status','Baixa realizada com sucesso!'); //testa aí
     }
-    // crie o método darbaixa testa
+   
+    public function listarProdutos(Request $request){
+        if ($request->busca) {
+            $produtos = Produto::where('nome_produto', 'LIKE', "%{$request->busca}%")->paginate(10);
+        } else {
+            $produtos = Produto::all();
+        }
+        
+        return view('listar_produto', compact('produtos'));
+    }
 }
