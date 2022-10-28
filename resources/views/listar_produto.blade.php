@@ -49,8 +49,10 @@
                 @endif
             </tr>
         @endforelse
-        {{ $produtos->links('vendor.pagination.bootstrap-4') }}
+        
     </tbody>
 </table>
+
+{{ $produtos->appends(['busca' => request()->get('search', '')])->links('vendor.pagination.bootstrap-4') }}
 
 @endsection

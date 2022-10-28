@@ -50,7 +50,7 @@ class ProdutosController extends Controller
         if ($request->busca) {
             $produtos = Produto::where('nome_produto', 'LIKE', "%{$request->busca}%")->paginate(10);
         } else {
-            $produtos = Produto::all();
+            $produtos = Produto::paginate(10);
         }
         
         return view('listar_produto', compact('produtos'));
