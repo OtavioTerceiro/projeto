@@ -13,6 +13,13 @@ class XmlController extends Controller
 
     public function enviar(Request $request)
     {
+        $request->validate([
+            'xml' => ['required', 'max:4096','mimes:xml']
+        ],[
+            'required' => 'Arquivo XML não enviado!',
+            'max' => 'O tamanho máximo do arquivo é 4MB',
+            'mimes' => 'O formato permitido é XML!'
+        ]);
         $arquivo_xml= $request->file('xml');
         // salva o arquivo xml na variavel xml
         $dados_xml = simplexml_load_file($arquivo_xml);
@@ -24,13 +31,13 @@ class XmlController extends Controller
 		if(Xml::where('chave', $dados['id'])->exists()) {
 			return back()->with('error', 'xml já existe');
 		}
-		
+
 		$arquivo_xml->storeAs('xml', $arquivo_xml->getClientOriginalName());
         // salva o nome do arquivo no banco de dados
         $xml = new Xml();
 		$xml->chave = $dados['id'];
 		$xml->save();
-		
+
 		/*Salvar a quantidade do produto da XML na tabela produtos*/
 
 		//$conexao->query("UPDATE produto_cadastrar SET quantidade = quantidade + {$item->prod->qCom} WHERE id_link = {$item->prod->cProd}");
