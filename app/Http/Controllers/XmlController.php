@@ -20,6 +20,7 @@ class XmlController extends Controller
             'max' => 'O tamanho máximo do arquivo é 4MB',
             'mimes' => 'O formato permitido é XML!'
         ]);
+        
         $arquivo_xml= $request->file('xml');
         // salva o arquivo xml na variavel xml
         $dados_xml = simplexml_load_file($arquivo_xml);

@@ -13,6 +13,11 @@ class TransacaoController extends Controller
       return view('transacao.index');
    }
    public function mostrarTransacoes(Request $request){
+// Transacao::query()->when($request->codigo_produto and $request->busca, function($query){
+//    return $query->where('id_produto', $request->codigo_produto)
+//             ->whereBetween('data_trans', [$request->date, $request->date2])
+//             ->where('operacao', 1)->where('data_trans', 'LIKE', "%{$request->busca}%")->paginate(10);
+// })->when()
       if($request->codigo_produto){
          if ($request->busca) {
             $transacoes = Transacao::where('id_produto', $request->codigo_produto)

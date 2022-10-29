@@ -158,6 +158,15 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'nome_produto' => 'Nome do Produto',
+        'unidade_medida' => 'Unidade de Medida',
+        'id_fornecedor' => 'Código do Fornecedor',
+        'preco' => 'Preço',
+        'departamento_produto' => 'Departamento',
+        'quantidade_embalagem' => 'Quantidade da Embalagem',
+        'quantidade' => 'Quantidade',
+        'id_link' => 'ID da XML'
+    ],
 
 ];
