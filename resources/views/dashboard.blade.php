@@ -27,7 +27,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        Adicione um arquivo<input required type="file" name="xml" id="xml" class="form-control">
+        Adicione um arquivo<input required type="file" name="xml" id="xml" class="form-control w-auto">
 
         <button class="my-3 btn btn-outline-success" type="submit">Enviar</button>
 

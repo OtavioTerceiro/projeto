@@ -57,6 +57,18 @@ class ProdutosController extends Controller
 
     public function baixaTransacao(Request $request)
     {
+
+        $request->validate([
+            'quantidade' => ['required', 'numeric'],
+            'motivo_saida' => ['required', 'in:Venda,Devolucao,Avaria,Garantia']
+        ], [
+            'quantidade.required' => 'O campo Quantidade é obrigatório!',
+            'quantidade.numeric' => 'O campo Quantidade tem que ser numérico!',
+            'motivo_saida.required' =>  'O campo Motivo de Saída é obrigatório!',
+            'motivo_saida.in' =>  'O campo Motivo de Saída deve ser Venda, Devolução, Avaria ou Garantia!',
+        ]);
+
+
         $produto = Produto::findOrFail($request->cod_prod);
         $produto->update([
             'quantidade' => $produto->quantidade - $request->quantidade

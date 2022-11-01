@@ -34,7 +34,7 @@
                 <a class="btn btn-primary fs-3" href="{{route('listar_transacoes')}}">Listar Transações</a>
                 <a class="btn btn-primary fs-3" href="{{route('listar')}}">Listar produtos</a>
             </div>
-            
+
             <div class="col-9 bg-light">
                 @yield('conteudo')
             </div>

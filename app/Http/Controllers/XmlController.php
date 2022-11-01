@@ -6,6 +6,7 @@ use App\Models\Fornecedor;
 use App\Models\Produto;
 use App\Models\Transacao;
 use App\Models\Xml;
+use App\Rules\xml as RulesXml;
 use Illuminate\Http\Request;
 
 class XmlController extends Controller
@@ -14,13 +15,12 @@ class XmlController extends Controller
     public function enviar(Request $request)
     {
         $request->validate([
-            'xml' => ['required', 'max:4096','mimes:xml']
+            'xml' => ['required', 'max:4096', new RulesXml]
         ],[
             'required' => 'Arquivo XML não enviado!',
             'max' => 'O tamanho máximo do arquivo é 4MB',
-            'mimes' => 'O formato permitido é XML!'
         ]);
-        
+
         $arquivo_xml= $request->file('xml');
         // salva o arquivo xml na variavel xml
         $dados_xml = simplexml_load_file($arquivo_xml);
@@ -59,6 +59,9 @@ class XmlController extends Controller
 
 			//input: id_link
 			$produto = Produto::where('id_link', $item->prod->cProd)->first();
+            if(!$produto){
+                continue;
+            }
 			$produto->update([
 				'quantidade' => $produto->quantidade + (int) $item->prod->qCom,
 				'id_fornecedor' => $fornecedor->id
