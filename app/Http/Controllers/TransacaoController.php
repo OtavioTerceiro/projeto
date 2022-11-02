@@ -55,7 +55,6 @@ class TransacaoController extends Controller
         }
         return view('listar_transacoes', compact('transacoes'));
     }
-
     public function cancelarBaixa(Request $request)
     {
       $request->validate([
@@ -67,7 +66,6 @@ class TransacaoController extends Controller
       ]);
 
       $transacao = Transacao::where('id', $request->id)->first();
-
       $produto = Produto::where('id', $transacao->id_produto)->first();
       Produto::find($transacao->id_produto)->update(['quantidade' => $produto->quantidade + $transacao->qtd_transacao]);
 

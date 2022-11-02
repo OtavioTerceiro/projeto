@@ -2,7 +2,7 @@
 
 @section('conteudo')
 
-<h2>LISTAR PRODUTO</h2>
+<h2 class="my-4">Listar Produtos</h2>
 
 <form class="d-flex flex-wrap justify-content-center align-items-center gap-1 mb-3" action="{{ route('listar') }}" method="get">
     {{-- <label class="m-0 fs-3" for="busca">Faça uma Busca:</label> --}}

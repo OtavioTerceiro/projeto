@@ -1,16 +1,22 @@
-<x-guest-layout>
-    <x-auth-card>
+@extends('layouts.app')
+
+@section('conteudo')
+
+
         <x-slot name="logo">
             <a href="/">
                 <x-application-logo width="82" />
             </a>
         </x-slot>
 
-        <div class="card-body">
+        <h2 class="my-4">Cadastro de Usuários</h2>
+        <x-auth-session-status class="mb-3" :status="session('status')" />
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <div class="d-flex justify-content-center">
             <!-- Validation Errors -->
-            <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <form method="POST" action="{{ route('register') }}">
+
+            <form style="max-width: 400px; width: 400px" class="border border-2 shadow bg-light p-4 " method="POST" action="{{ route('register') }}">
                 @csrf
 
                 <!-- Name -->
@@ -46,16 +52,16 @@
 
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
-                        <a class="text-muted me-3 text-decoration-none" href="{{ route('login') }}">
-                            {{ __('Already registered?') }}
+                        <a class="text-muted me-3 text-decoration-none" href="{{ route('password.request') }}">
+                            {{ __('Esqueceu sua senha?') }}
                         </a>
 
                         <x-button>
-                            {{ __('Register') }}
+                            {{ __('Casdastrar') }}
                         </x-button>
                     </div>
                 </div>
             </form>
         </div>
-    </x-auth-card>
-</x-guest-layout>
+
+@endsection

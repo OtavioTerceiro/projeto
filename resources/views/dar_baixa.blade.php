@@ -38,6 +38,6 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
 
-        <button class="btn btn-success my-3 text-white fw-bold mx-4" type="submit">Concluir</button>
+        <button class="text-white fw-bold btn btn-success" type="submit">Concluir</button>
     </form>
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('conteudo')
-
+<h2 class="my-4">Listar Transações</h2>
     <form class="d-flex flex-wrap justify-content-center align-items-center gap-1 mb-3" action="{{ route('listar_transacoes') }}"
         method="get">
 

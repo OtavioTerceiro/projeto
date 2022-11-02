@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom sticky-top navbar ">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand" href="/">
@@ -12,9 +12,36 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                    {{ __('XML') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ route('produtos') }}" :active="request()->routeIs('produtos')">
+                    {{ __('Cadastro de Produtos') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ route('dar_baixa_busca') }}" :active="request()->routeIs('dar_baixa_busca')">
+                    {{ __('Baixa de Produtos') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ route('cancelar_baixa') }}" :active="request()->routeIs('cancelar_baixa')">
+                    {{ __('Cancelar Baixa') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ route('listar_transacoes') }}" :active="request()->routeIs('listar_transacoes')">
+                    {{ __('Listar Transações') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ route('listar') }}" :active="request()->routeIs('listar')">
+                    {{ __('Listar Produtos') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                    {{ __('Cadastrar Usuário') }}
                 </x-nav-link>
             </ul>
+
+
+
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav">

@@ -12,6 +12,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <!-- Coloque dentro da pasta public -->
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,7 +22,7 @@
         @include('layouts.navigation')
 
         <!-- Page Heading -->
-        <header class="d-flex py-3 bg-white shadow-sm border-bottom">
+        {{-- <header class="d-flex py-3 bg-white shadow-sm border-bottom">
             <div class="container">
             </div>
         </header>
@@ -33,11 +35,11 @@
                 <a class="btn btn-primary fs-3" href="{{route('cancelar_baixa')}}">Cancelar baixa em produto</a>
                 <a class="btn btn-primary fs-3" href="{{route('listar_transacoes')}}">Listar Transações</a>
                 <a class="btn btn-primary fs-3" href="{{route('listar')}}">Listar produtos</a>
-            </div>
+            </div> --}}
 
-            <div class="col-9 bg-light">
+            <div class="container my-4 bg-light">
                 @yield('conteudo')
             </div>
-        </div>
+        {{-- </div> --}}
     </body>
 </html>
