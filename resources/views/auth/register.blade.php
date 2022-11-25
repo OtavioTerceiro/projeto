@@ -9,7 +9,7 @@
             </a>
         </x-slot>
 
-        <h2 class="my-4">Cadastro de Usuários</h2>
+        <h2 class="my-4">Cadastro de Funcionários</h2>
         <x-auth-session-status class="mb-3" :status="session('status')" />
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <div class="d-flex justify-content-center">

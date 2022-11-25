@@ -35,6 +35,7 @@
                 @enderror
             </div>
 
+
             <div class="w-100">
                 <label for="unidade_medida">Unidade de Medida</label>
                 <input class="form-control @error('unidade_medida') is-invalid @enderror" type="text"

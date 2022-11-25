@@ -4,7 +4,8 @@
         <a class="navbar-brand" href="/">
             <x-application-logo width="36" />
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -35,9 +36,27 @@
                     {{ __('Listar Produtos') }}
                 </x-nav-link>
 
-                <x-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                    {{ __('Cadastrar Usuário') }}
-                </x-nav-link>
+                @if (auth()->user()->admin)
+                    {{-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Funcionários
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="#">Cadastrar Funcionário</a></li>
+                        <li><a class="dropdown-item" href="#">Listar Funcionários</a></li>
+                    </ul> --}}
+
+                    <x-dropdown>
+                        <x-slot name='trigger'>
+                            {{ __('Funcionários') }}
+                        </x-slot>
+
+                        <x-slot name='content'>
+                            <a class="dropdown-item" href="{{ route('register') }}">Cadastrar Funcionário</a>
+                            <a class="dropdown-item" href="{{ route('listar_funcionarios') }}">Listar Funcionários</a>
+                        </x-slot>
+                    </x-dropdown>
+                @endif
             </ul>
 
 
@@ -59,7 +78,7 @@
                                 @csrf
 
                                 <x-dropdown-link :href="route('logout')"
-                                                 onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>

@@ -25,7 +25,7 @@
 
                 <!-- Password -->
                 <div class="mb-3">
-                    <x-label for="password" :value="__('Password')" />
+                    <x-label for="password" :value="__('Senha')" />
 
                     <x-input id="password" type="password"
                              name="password"
@@ -38,7 +38,7 @@
                         <x-checkbox id="remember_me" name="remember" />
 
                         <label class="form-check-label" for="remember_me">
-                            {{ __('Remember Me') }}
+                            {{ __('Lembre-me') }}
                         </label>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="d-flex justify-content-end align-items-baseline">
                         @if (Route::has('password.request'))
                             <a class="text-muted me-3" href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
+                                {{ __('Esqueceu sua senha?') }}
                             </a>
                         @endif
 

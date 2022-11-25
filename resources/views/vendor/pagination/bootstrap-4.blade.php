@@ -42,5 +42,20 @@
                 </li>
             @endif
         </ul>
+        <div>
+            <p class="text-sm text-gray-700 leading-5">
+                {!! __('Mostrando') !!}
+                @if ($paginator->firstItem())
+                    <span class="font-medium">{{ $paginator->firstItem() }}</span>
+                    {!! __('até') !!}
+                    <span class="font-medium">{{ $paginator->lastItem() }}</span>
+                @else
+                    {{ $paginator->count() }}
+                @endif
+                {!! __('de') !!}
+                <span class="font-medium">{{ $paginator->total() }}</span>
+                {!! __('resultados') !!}
+            </p>
+        </div>
     </nav>
 @endif

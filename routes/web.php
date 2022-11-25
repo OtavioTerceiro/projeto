@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\TransacaoController;
 use App\Http\Controllers\XmlController;
@@ -47,10 +48,16 @@ Route::get('/cancelar_baixa', function(){
 
 Route::get('/lista_cancelar_baixa',[TransacaoController::class,'index'])->middleware(['auth'])->name('transacao.index');
 // esse é para o form
-Route::get('/listar_transacoes', [TransacaoController::class,'mostrarTransacoes'])->middleware(['auth'])->name('listar_transacoes'); 
+Route::get('/listar_transacoes', [TransacaoController::class,'mostrarTransacoes'])->middleware(['auth'])->name('listar_transacoes');
 // esse mostra a tabela
-Route::get('/cancelar_transacao/{id}', [TransacaoController::class,'cancelarBaixa'])->middleware(['auth'])->name('cancelar_transacao'); 
+Route::get('/cancelar_transacao/{id}', [TransacaoController::class,'cancelarBaixa'])->middleware(['auth'])->name('cancelar_transacao');
 //  esse cancela a baixa
+
+Route::get('/listar_funcionarios',[FuncionarioController::class,'listarFuncionarios'])->middleware(['auth'])->name('listar_funcionarios');
+
+Route::post('/excluir_funcionario',[FuncionarioController::class,'excluirFuncionario'])->middleware(['auth'])->name('excluir_funcionario');
+
+Route::post('/editar_funcionario',[FuncionarioController::class,'editarFuncionario'])->middleware(['auth'])->name('editar_funcionario');
 
 
 require __DIR__.'/auth.php';
