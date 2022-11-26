@@ -8,6 +8,12 @@
         </div>
     @endif
 
+    @if (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="d-flex flex-wrap justify-content-center ">
         <form style="max-width: 400px; width: 400px" class="d-flex flex-wrap gap-3 border border-2 shadow bg-light p-4"
             action="{{ route('baixa.transacao', ['cod_prod' => $produto->id]) }}" method="post">

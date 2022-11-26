@@ -17,7 +17,6 @@
             {{ session('status') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        {{-- o backend no controller pra retornar o status --}}
     @endif
 
     <div class="d-flex flex-wrap justify-content-center ">
@@ -73,6 +72,17 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
+            <div class="w-100">
+                <label for="userName">Quantidade total</label>
+                <input class="form-control @error('quantidade') is-invalid @enderror" type="number"
+                    name="quantidade" placeholder="Digite a quantidade total"
+                    value="{{ old('quantidade') }}">
+                @error('quantidade')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
 
             <div class="w-100">
                 <label for="userName">Código XML</label>

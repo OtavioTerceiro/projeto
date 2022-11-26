@@ -50,7 +50,7 @@ Route::get('/lista_cancelar_baixa',[TransacaoController::class,'index'])->middle
 // esse é para o form
 Route::get('/listar_transacoes', [TransacaoController::class,'mostrarTransacoes'])->middleware(['auth'])->name('listar_transacoes');
 // esse mostra a tabela
-Route::get('/cancelar_transacao/{id}', [TransacaoController::class,'cancelarBaixa'])->middleware(['auth'])->name('cancelar_transacao');
+Route::post('/cancelar_transacao/{id}', [TransacaoController::class,'cancelarBaixa'])->middleware(['auth'])->name('cancelar_transacao');
 //  esse cancela a baixa
 
 Route::get('/listar_funcionarios',[FuncionarioController::class,'listarFuncionarios'])->middleware(['auth'])->name('listar_funcionarios');

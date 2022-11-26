@@ -20,6 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
+        abort_if(!auth()->user()->admin,401,'NÃO AUTORIZADO SOMENTE ADMINISTRADOR');
         return view('auth.register');
     }
 
@@ -33,6 +34,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        abort_if(!auth()->user()->admin,401,'NÃO AUTORIZADO SOMENTE ADMINISTRADOR');
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

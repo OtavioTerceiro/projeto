@@ -20,11 +20,12 @@ class Transacao extends Model
         'id_produto',
         'preco',
         'qtd_transacao',
-        //    'qtd_entrada',
-        //    'qtd_saida',
         'id_xml',
-        'observacao'
+        'observacao',
+        'func_id'
     ];
-        
-    
+
+    public function funcionario(){
+        return $this->belongsTo(User::class);
+    }
 }

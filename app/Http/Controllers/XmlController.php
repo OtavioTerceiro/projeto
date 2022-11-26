@@ -29,6 +29,7 @@ class XmlController extends Controller
         $dados['emitente']= $dados_xml->NFe->infNFe->emit->xNome;
         $dados['emitentecnpj'] = $dados_xml->NFe->infNFe->emit->CNPJ;
 
+
 		if(Xml::where('chave', $dados['id'])->exists()) {
 			return back()->with('error', 'xml já existe');
 		}
@@ -37,7 +38,8 @@ class XmlController extends Controller
         // salva o nome do arquivo no banco de dados
         $xml = new Xml();
 		$xml->chave = $dados['id'];
-		$xml->save();
+        $xml->func_id = auth()->user()->id;
+        $xml->save();
 
 		/*Salvar a quantidade do produto da XML na tabela produtos*/
 
@@ -81,7 +83,8 @@ class XmlController extends Controller
 				'qtd_transacao' => $item->prod->qCom,
 				// 'qtd_entrada' => $item->prod->qCom,
 				// 'qtd_saida' => null, //vai mudar?
-				'id_xml' => $xml->id, //se for mudar vai ter que alterar o model a migration e rodar
+				'id_xml' => $xml->id,
+                'func_id' => auth()->user()->id,
 			]);
 		}
 

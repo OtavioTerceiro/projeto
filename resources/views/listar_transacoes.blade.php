@@ -30,6 +30,7 @@
                 @if (request()->get('codigo_produto'))
                     <th scope="col">AÇÃO</th>
                 @endif
+                <th>FUNCIONÁRIO</th>
             </tr>
         </thead>
         <tbody>
@@ -44,13 +45,16 @@
                     <td>{{ $transacao->qtd_transacao }}</td>
                     <td>{{ $transacao->observacao ?? '-' }}</td>
 
+                    <td>{{ $transacao->funcionario->name}}</td>
+                    
                     @if (request()->get('codigo_produto'))
                         <td>
                             @if (!$transacao->observacao)
                                 <form class="text-center"
-                                    action="{{ route('cancelar_transacao', ['id' => $transacao->id]) }}" method="get">
+                                    action="{{ route('cancelar_transacao', ['id' => $transacao->id]) }}" method="post">
 
-                                    {{-- <input name="id" type="hidden" value="{{ $transacao->id }}"> --}}
+                                    <input name="id" type="hidden" value="{{ $transacao->id }}">
+                                    @csrf
                                     <button class="btn btn-danger" type="submit">Cancelar</button>
                                 </form>
                             @else

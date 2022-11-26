@@ -16,8 +16,10 @@ class Xml extends Migration
         Schema::create('xml', function (Blueprint $table) {
             $table->id();
             $table->string('chave')->max(250);
+            $table->foreignId('func_id')->nullable()->constrained('users');
+
         });
-        
+
     }
 
     /**

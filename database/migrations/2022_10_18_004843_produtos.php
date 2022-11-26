@@ -22,7 +22,9 @@ class Produtos extends Migration
             $table->string("departamento_produto")->max(150);
             $table->integer("quantidade_embalagem"); //int
             $table->integer("quantidade")->nullable();
-            $table->integer("id_link"); 
+            $table->integer("id_link");
+            $table->foreignId('func_id')->nullable()->constrained('users');
+
         });
 
     }

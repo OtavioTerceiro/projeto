@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class FuncionarioController extends Controller
 {
     public function listarFuncionarios(Request $request){
+        abort_if(!auth()->user()->admin,401,'NÃO AUTORIZADO SOMENTE ADMINISTRADOR');
         $busca = $request->busca;
         $funcionarios = User::where('admin', '=', 0)
             ->where(function($query) use($busca) {

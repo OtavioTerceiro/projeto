@@ -17,6 +17,7 @@ class Produto extends Model
         'departamento_produto',
         'quantidade_embalagem',
         'quantidade',
-        'id_link'
+        'id_link',
+        'func_id'
     ];
 }

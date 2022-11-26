@@ -17,11 +17,13 @@ class ProdutosController extends Controller
 
     public function salvar(Request $request)
     {
+
         $request->validate([
             '*' => 'required',
             'preco' => ['numeric'],
             'quantidade_embalagem' => ['numeric'],
-            'id_link' => ['numeric']
+            'id_link' => ['numeric'],
+            'quantidade' => ['numeric'],
 
         ], [
             'nome_produto.required' => 'O campo Nome do Produto é obrigatório!',
@@ -29,10 +31,14 @@ class ProdutosController extends Controller
             'preco.numeric' => 'O campo preço tem que ser numérico!',
             'departamento_produto.required' => 'O campo Departamento é obrigatório!',
             'quantidade_embalagem.numeric' => 'O campo quantidade da embalagem é obrigatório!',
+            'quantidade.numeric' => 'O campo quantidade é obrigatório!',
             'id_link.numeric' => 'O campo Código da XML tem que ser numérico!'
 
         ]);
-        Produto::create($request->all());
+        $dados = $request->except('_token');
+        $dados['func_id'] = auth()->user()->id;
+        Produto::create($dados);
+
         return back()->with('status', 'Dados salvos com sucesso!');
     }
     // é método porque é poo.
@@ -70,6 +76,9 @@ class ProdutosController extends Controller
 
 
         $produto = Produto::findOrFail($request->cod_prod);
+        if($request->quantidade > $produto->quantidade){
+            return back()->with('error','Valor ultrapassa o limite permitido');
+        }
         $produto->update([
             'quantidade' => $produto->quantidade - $request->quantidade
         ]);
@@ -81,6 +90,7 @@ class ProdutosController extends Controller
             'preco' => $produto->preco,
             'qtd_transacao' => $request->quantidade,
             'id_produto' => $produto->id,
+            'func_id' => auth()->user()->id,
         ]);
         return back()->with('status', 'Baixa realizada com sucesso!'); //testa aí
     }

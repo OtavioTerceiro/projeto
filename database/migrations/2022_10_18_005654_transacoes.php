@@ -12,8 +12,8 @@ class Transacoes extends Migration
      * @return void
      */
     public function up()
-    { 
-        Schema::create('transacoes', function (Blueprint $table) {
+    {
+        Schema::create('transacoes', function (Blueprint $table){
             $table->id();
             $table->date('data_trans');
             $table->boolean('operacao');
@@ -27,8 +27,10 @@ class Transacoes extends Migration
             // $table->decimal('qtd_saida')->nullable();
             $table->foreignId('id_xml')->nullable()->constrained('xml')->onDelete('cascade')->onUpdate('cascade');
             $table->string('observacao')->nullable();
+            $table->foreignId('func_id')->nullable()->constrained('users');
+
         });
-    }           
+    }
     /**
      * Reverse the migrations.
      *

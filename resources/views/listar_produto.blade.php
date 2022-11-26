@@ -26,6 +26,7 @@
           <th>PREÇO</th>
           <th>QUANTIDADE EMBALAGEM</th>
           <th>QUANTIDADE</th>
+
         </tr>
     </thead>
 
@@ -39,6 +40,7 @@
                 <td>{{ $produto->preco}}</td>
                 <td>{{ $produto->quantidade_embalagem }}</td>
                 <td>{{ $produto->quantidade ?? '-' }}</td>
+
             </tr>
         @empty
             <tr>

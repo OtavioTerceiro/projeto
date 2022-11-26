@@ -38,34 +38,37 @@ class TransacaoController extends Controller
         // })->when()
         if ($request->codigo_produto) {
             if ($request->busca) {
-                $transacoes = Transacao::where('id_produto', $request->codigo_produto)
+                $transacoes = Transacao::with('funcionario')->where('id_produto', $request->codigo_produto)
                     ->whereBetween('data_trans', [$request->date1, $request->date2])
                     ->where('operacao', 1)->where('data_trans', 'LIKE', "%{$request->busca}%")->paginate(10);
             } else {
-                $transacoes = Transacao::where('id_produto', $request->codigo_produto)
+                $transacoes = Transacao::with('funcionario')->where('id_produto', $request->codigo_produto)
                     ->whereBetween('data_trans', [$request->date1, $request->date2])
                     ->where('operacao', 1)->paginate(10);
             }
         } else {
             if ($request->busca) {
-                $transacoes = Transacao::where('data_trans', 'LIKE', "%{$request->busca}%")->paginate(10);
+                $transacoes = Transacao::with('funcionario')->where('data_trans', 'LIKE', "%{$request->busca}%")->paginate(10);
             } else {
                 $transacoes = Transacao::paginate(10);
             }
         }
         return view('listar_transacoes', compact('transacoes'));
     }
+
     public function cancelarBaixa(Request $request)
     {
-      $request->validate([
-         'id' => 'required|numeric|exists:transacoes,id'
-      ],[
-         'required' => '',
-         'numeric' => '',
-         'exists' => ''
-      ]);
+        $request->validate([
+            'id' => 'required|numeric|exists:transacoes,id'
+         ],
+
+        [   'required' => 'o campo é obrigatório',
+            'numeric' => 'o campo deve ser numero',
+            'exists' => 'o campo deve existir no banco'
+        ]);
 
       $transacao = Transacao::where('id', $request->id)->first();
+
       $produto = Produto::where('id', $transacao->id_produto)->first();
       Produto::find($transacao->id_produto)->update(['quantidade' => $produto->quantidade + $transacao->qtd_transacao]);
 
