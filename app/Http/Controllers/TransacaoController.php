@@ -38,6 +38,7 @@ class TransacaoController extends Controller
         // })->when()
         if ($request->codigo_produto) {
             if ($request->busca) {
+
                 $transacoes = Transacao::with('funcionario')->where('id_produto', $request->codigo_produto)
                     ->whereBetween('data_trans', [$request->date1, $request->date2])
                     ->where('operacao', 1)->where('data_trans', 'LIKE', "%{$request->busca}%")->paginate(10);

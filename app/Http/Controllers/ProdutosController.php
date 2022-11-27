@@ -6,6 +6,7 @@ use App\Models\Fornecedor;
 use App\Models\Produto;
 use App\Models\Transacao;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProdutosController extends Controller
 {
@@ -104,5 +105,26 @@ class ProdutosController extends Controller
         }
 
         return view('listar_produto', compact('produtos'));
+    }
+
+    public function editarProduto(Request $request){
+        $credenciais = $request->validate([
+            'nome_produto' => 'required | string',
+            'preco' => 'required | decimal',
+            'quantidade_embalagem' => 'required | decimal',
+            'id_link' => 'required | int',
+            'unidade_medida' => 'required | string',
+            'departamento_produto' =>'required | string',
+
+        ]);
+
+        User::find($request->id)->update($credenciais);
+
+        return back()->with('status', 'Produto editado com sucesso!');
+    }
+
+    public function excluirProduto(Request $request){
+        User::find($request->id)->delete();
+        return back()->with('status', 'Produto excluído com sucesso!');
     }
 }

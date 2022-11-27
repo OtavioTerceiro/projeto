@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::post('enviar/xml', [XmlController::class,'enviar'])->middleware(['auth'])->name('enviar.xml'); //agora vai no form e coloca
+Route::post('enviar/xml', [XmlController::class,'enviar'])->middleware(['auth'])->name('enviar.xml');
 
 
 Route::get('/produtos', [ProdutosController::class,'index'])->middleware(['auth'])->name('produtos');
@@ -59,6 +59,8 @@ Route::post('/excluir_funcionario',[FuncionarioController::class,'excluirFuncion
 
 Route::post('/editar_funcionario',[FuncionarioController::class,'editarFuncionario'])->middleware(['auth'])->name('editar_funcionario');
 
+Route::post('/excluir_produto',[ProdutosController::class,'excluirProduto'])->middleware(['auth'])->name('excluir_produto');
+
+Route::post('/editar_produto',[ProdutosController::class,'editarProduto'])->middleware(['auth'])->name('editar_produto');
 
 require __DIR__.'/auth.php';
-
