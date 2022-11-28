@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'System Byte')
+
 @section('conteudo')
 
     @if ($errors->any())

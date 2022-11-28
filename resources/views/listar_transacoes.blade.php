@@ -45,8 +45,8 @@
                     <td>{{ $transacao->qtd_transacao }}</td>
                     <td>{{ $transacao->observacao ?? '-' }}</td>
 
-                    <td>{{ $transacao->funcionario->name}}</td>
-                    
+                    <td>{{ $transacao->func_id}}</td>
+
                     @if (request()->get('codigo_produto'))
                         <td>
                             @if (!$transacao->observacao)

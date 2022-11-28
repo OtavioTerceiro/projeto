@@ -8,7 +8,7 @@
 
         <div class="card-body">
             <div class="mb-4">
-                {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+                {{ __('Esqueceu sua senha? Sem problemas. Basta nos informar seu endereço de e-mail e enviaremos um e-mail com um link de redefinição de senha que permitirá que você escolha um novo.') }}
             </div>
 
             <div class="card-body">
@@ -30,7 +30,7 @@
 
                     <div class="d-flex justify-content-end mt-4">
                         <x-button>
-                            {{ __('Email Password Reset Link') }}
+                            {{ __('Redefinir Senha') }}
                         </x-button>
                     </div>
                 </form>

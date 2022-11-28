@@ -96,9 +96,9 @@
                                 <div class="modal-body d-flex flex-wrap gap-2">
                                     <input name="id" type="hidden" id="id">
                                     <label for="email">E-mail</label>
-                                    <input class="form-control" name="email" type="email" id="email">
+                                    <input required class="form-control" name="email" type="email" id="email">
                                     <label for="nome">Nome</label>
-                                    <input class="form-control" name="name" type="text" id="name">
+                                    <input required class="form-control" name="name" type="text" id="name">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>

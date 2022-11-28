@@ -16,7 +16,7 @@
             method="GET">
             <div class="w-100 ">
                 <label class="form-label" for="userName">CÓDIGO DO PRODUTO</label>
-                <input class="form-control  @error('codigo_produto') is-invalid @enderror" type="number"
+                <input required class="form-control  @error('codigo_produto') is-invalid @enderror" type="number"
                     name="codigo_produto" min="1" value="{{ old('codigo_produto') }}">
                 @error('codigo_produto')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -26,7 +26,7 @@
 
             <div class="w-100 ">
                 <label class="form-label" for="userName">SELECIONE INTERVALO</label>
-                <input class="form-control @error('date1') is-invalid @enderror" type="date" name="date1"
+                <input required class="form-control @error('date1') is-invalid @enderror" type="date" name="date1"
                     min="2000-01" max="{{ date('Y-m-d') }}">
                 @error('date1')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -37,7 +37,7 @@
 
 
             <div class="w-100 ">
-                <input class="form-control  @error('date2') is-invalid @enderror" type="date" name="date2"
+                <input required class="form-control  @error('date2') is-invalid @enderror" type="date" name="date2"
                     min="2000-01" max="{{ date('Y-m-d') }}">
                 @error('date2')
                     <div class="invalid-feedback">{{ $message }}</div>

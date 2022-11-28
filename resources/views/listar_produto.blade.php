@@ -25,6 +25,7 @@
           <th>FORNECEDOR</th>
           <th>PREÇO</th>
           <th>QUANTIDADE EMBALAGEM</th>
+          <th>QUANTIDADE TOTAL</th>
           <th>AÇÕES</th>
 
 
