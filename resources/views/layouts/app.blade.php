@@ -12,7 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <!-- Coloque dentro da pasta public -->
+      
         <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">
 
         <!-- Scripts -->

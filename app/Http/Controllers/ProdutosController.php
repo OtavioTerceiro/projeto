@@ -42,12 +42,12 @@ class ProdutosController extends Controller
 
         return back()->with('status', 'Dados salvos com sucesso!');
     }
-    // é método porque é poo.
+
     public function buscarProduto(Request $request)
     {
         return view('dar_baixa_busca');
     }
-    // agora tem que ver na web.php a rota pra busca se tá certo
+  
     public function darBaixa(Request $request)
     {
         $request->validate([
@@ -87,7 +87,6 @@ class ProdutosController extends Controller
             'data_trans' => now(),
             'operacao' => 1,
             'motivo_saida' => $request->motivo_saida,
-            //'id_fornecedor' => 1, // não tem fornecedor ou é consusmidor final eu estou dizendo que 0 vai representar o consumidor final
             'preco' => $produto->preco,
             'qtd_transacao' => $request->quantidade,
             'id_produto' => $produto->id,

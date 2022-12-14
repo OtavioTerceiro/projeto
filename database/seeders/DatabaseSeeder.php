@@ -16,14 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
-        // Fornecedor::factory(10)->create();
-        // User::create([
-        //     'name' => 'otavio',
-        //     'email' => 'otavio@gmail.com',
-        //     'password' => bcrypt('12345678'),
-        //     'admin' =>
-        // ]);
+        //User::factory(2)->create();
+        //Fornecedor::factory(10)->create();
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678'),
+            'admin' => 1
+        ]);
 
         // $produtos = ['Filé de frango', 'Rapadura', 'Cuscuz', 'Feijão', 'Arroz', 'Mandioca', 'Vitamina', 'Coca Cola', 'Jiló', 'Alface', 'Arroz Integral'];
         // foreach($produtos as $produto) {

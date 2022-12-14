@@ -23,7 +23,7 @@
         <form style="max-width: 400px; width: 400px" class="d-flex flex-wrap gap-3 border border-2 shadow bg-light p-4"
             action="{{ route('produtos.salvar') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <!-- Token de segurança ñ funciona sem ele -->
+            <!-- Token de segurança  -->
 
             <div class="w-100">
                 <label for="produto">Nome do Produto</label>
@@ -96,6 +96,13 @@
             </div>
 
         </form>
-
+<script>
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(){
+                    this.classList.remove('is-invalid');
+                })
+            })
+        </script>
     </div>
 @endsection
