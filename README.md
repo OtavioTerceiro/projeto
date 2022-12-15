@@ -5,7 +5,7 @@ Projeto desenvolvido para ser um sistema gerenciador de estoque de peças para
 veículos de grande porte dentro da disciplina de Projeto de Desenvolvimento de Software.
 
 Para ver o tutorial de instalação clique nesse link
-[Vídeo Explicativo](https://link-da-documentação)
+[Vídeo Explicativo](https://drive.google.com/file/d/1pKRT1EHyausRiRzW-asc-XyaP7HxM0Za/view?usp=sharing)
 ## Instalações Necessárias para o Sistema
 
 Baixe o NodeJS: https://nodejs.org/en/download/
