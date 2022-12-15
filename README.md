@@ -8,6 +8,9 @@ Para ver o tutorial de instalação clique nesse link
 [Vídeo Explicativo](https://link-da-documentação)
 ## Instalações Necessárias para o Sistema
 
+Baixe o NodeJS: https://nodejs.org/en/download/
+
+Baixe o Composer: https://getcomposer.org/download/
 
 1° passo: Instalar as dependências de desenvolvimento do Composer
 
